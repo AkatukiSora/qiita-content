@@ -1,0 +1,12 @@
+{
+  "name": "qiita-content",
+  "version": "0.0.0",
+  "description": "AkatukiSora's Qiita contents",
+  "repository": "https://github.com/AkatukiSora/qiita-content.git",
+  "author": "AkatukiSora <akatuki-sora@akatuki-host.com>",
+  "license": "none",
+  "private": true,
+  "dependencies": {
+    "@qiita/qiita-cli": "^1.6.1"
+  }
+}
