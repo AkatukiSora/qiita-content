@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '20.18.0'
       - run: yarn install
-      - run: yarn qiita publish
+      - run: yarn qiita publish --all --force
         env:
           QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
       - uses: peter-evans/create-pull-request@v5
