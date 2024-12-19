@@ -1,27 +1,33 @@
-# Please set 'QIITA_TOKEN' secret to your repository
-name: Publish articles
+name: Sync remote and create PR
 
 on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 permissions:
   contents: write
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  pull-requests: write
 
 jobs:
-  publish_articles:
+  sync_remote_and_create_pr:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - uses: increments/qiita-cli/actions/publish@v1
+          ref: master
+      - uses: actions/setup-node@v4
         with:
-          qiita-token: ${{ secrets.QIITA_TOKEN }}
-          root: "."
+          node-version: '20.18.0'
+      - run: yarn install
+      - run: yarn qiita publish
+        env:
+          QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
+      - uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'Sync article files'
+          delete-branch: true
+          title: 'Sync article files'
+          reviewers: AkatukiSora
