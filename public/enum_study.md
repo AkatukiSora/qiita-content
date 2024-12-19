@@ -1,12 +1,12 @@
 ---
 title: Enumがなにかわからなかったから調べた話
 tags:
-  - 'TypeScript'
-  - 'JavaScript'
-  - 'enum'
+  - JavaScript
+  - TypeScript
+  - enum
 private: false
-updated_at: ''
-id: null
+updated_at: '2024-12-19T18:17:29+09:00'
+id: 48e73b9875807c3e2faa
 organization_url_name: null
 slide: false
 ignorePublish: false
