@@ -1,12 +1,12 @@
 ---
 title: ArcブラウザでTLS証明書の詳細を確認しようとしたけど、うまくいかなかった話
 tags:
-  - 'ARC'
-  - 'TLS証明書'
-  - 'certificate'
+  - ARC
+  - certificate
+  - TLS証明書
 private: false
-updated_at: ''
-id: null
+updated_at: '2024-12-19T18:17:29+09:00'
+id: 56ee130d2ffc8702fffa
 organization_url_name: null
 slide: false
 ignorePublish: false

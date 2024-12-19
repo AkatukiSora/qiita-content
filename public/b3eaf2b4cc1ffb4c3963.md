@@ -5,8 +5,8 @@ tags:
   - TypeScript
   - enum
 private: false
-updated_at: '2024-12-19T18:17:29+09:00'
-id: 48e73b9875807c3e2faa
+updated_at: '2024-12-19T18:15:13+09:00'
+id: b3eaf2b4cc1ffb4c3963
 organization_url_name: null
 slide: false
 ignorePublish: false
