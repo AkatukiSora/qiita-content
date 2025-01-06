@@ -4,8 +4,8 @@ tags:
   - UbuntuServer
   - Ubuntu22.04
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-01-06T16:20:37+09:00'
+id: 98ec5c2f4bf877c55ecb
 organization_url_name: null
 slide: false
 ignorePublish: false
