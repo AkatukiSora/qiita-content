@@ -2,6 +2,8 @@
 title: co2センサー作った話
 tags:
   - 'RaspberryPi'
+  - 'influxDB'
+  - 'grafana'
 private: false
 updated_at: ''
 id: null
