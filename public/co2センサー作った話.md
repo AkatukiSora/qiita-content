@@ -1,12 +1,12 @@
 ---
 title: co2センサー作った話
 tags:
-  - 'RaspberryPi'
-  - 'influxDB'
-  - 'grafana'
+  - RaspberryPi
+  - influxdb
+  - grafana
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-02-04T21:18:06+09:00'
+id: 36639455a6dbac23b2da
 organization_url_name: null
 slide: false
 ignorePublish: false
