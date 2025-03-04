@@ -147,12 +147,8 @@ write_api = write_client.write_api(write_options=SYNCHRONOUS)
 
 ExpectExecCycle = 5 #s
 
-def getCo2():
-    co2DataValue = mh_z19.read()
-    return co2DataValue
-
 def getPushData():
-    Data = getCo2()
+    Data = mh_z19.read()
     record = (
         Point(bucket)
         .tag("functionality", "Sensor")
@@ -161,13 +157,13 @@ def getPushData():
     write_api.write(bucket=bucket, org=org, record=record)
 
 while True:
-    biginTime = time.time()
+    beginTime = time.time()
 
     getPushData()
 
     endTime = time.time()
 
-    execTime = endTime - biginTime
+    execTime = endTime - beginTime
     diffTime = ExpectExecCycle - execTime
     time.sleep(diffTime)
 ```
