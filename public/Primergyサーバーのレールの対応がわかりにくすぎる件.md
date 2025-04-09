@@ -5,8 +5,8 @@ tags:
   - 'ラックマウント'
   - '自宅鯖'
 private: true
-updated_at: ''
-id: null
+updated_at: '2025-04-10T00:20:34+09:00'
+id: 12129d35157696648bfe
 organization_url_name: null
 slide: false
 ignorePublish: false
