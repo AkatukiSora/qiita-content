@@ -1,12 +1,12 @@
 ---
 title: GENKaigi参加してブログ書こうと思ったお話
 tags:
-  - 'GENKaigi'
-  - '技術イベント'
-  - 'イベントレポート'
+  - イベントレポート
+  - 技術イベント
+  - GENKaigi
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-09-04T18:42:08+09:00'
+id: e3c1861f84af349f2576
 organization_url_name: null
 slide: false
 ignorePublish: false
