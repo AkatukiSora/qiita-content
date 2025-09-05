@@ -1,12 +1,12 @@
 ---
 title: pnpmのワークフローを組むときにこけた話
 tags:
-  - 'Node.js'
-  - 'pnpm'
-  - 'GitHubActions'
+  - Node.js
+  - pnpm
+  - GitHubActions
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-09-05T17:29:19+09:00'
+id: b8f2e6b6eb6d93b8064f
 organization_url_name: null
 slide: false
 ignorePublish: false
