@@ -13,9 +13,11 @@ ignorePublish: false
 ---
 
 ## はじめに
-本記事は
+
+本記事は、GitHub Actionsで`cache: pnpm`を指定したsetup-nodeを使う際にハマったので備忘録がてら残しておこうと思います。
 
 ## 環境
+
 - Node.js: `v22`
 - pnpm: `v10.13.1`（Corepack経由）
 - CI: GitHub Actions（`ubuntu-latest`）
@@ -31,13 +33,13 @@ ignorePublish: false
 `Package manager should be pre-installed`と書かれています。
 cacheパラメーターを指定する場合、事前にパッケージマネージャーがセットアップされている必要があります。
 
-## actions/node-setupが失敗する
+## actions/setup-nodeが失敗する
 
 ### 発生状況
 
 その時yarnで動いていたワークフローをpnpmに変更しようとしていました。
 その時はsetup-nodeの後ろにpnpm/action-setupを追加しました。
-そのごGitHub Workflowを動作させたところsetup-nodeが以下のエラーで終了しました
+その後GitHub Actionsのワークフローを動作させたところ、setup-nodeが以下のエラーで終了しました。
 ```bash
 
 Run actions/setup-node@v4
@@ -62,26 +64,48 @@ Error: Unable to locate executable file: pnpm. Please verify either the file pat
 ```
 
 [変更の差分](https://github.com/AkatukiSora/qiita-content/commit/6b7d99fe303fcb5b0fcd25c049948d55fe284c2b#diff-32824c984905bb02bc7ffcef96a77addd1f1602cff71a11fbbfdd7f53ee026bb)
-[失敗したワークフロー](https://github.com/AkatukiSora/qiita-content/actions/runs/17459539391/job/49580773096)
 
 ### 主な原因
 
-[結論](#結論)でお話しているようにcacheの指定をしているのにpnpmのセットアップよりも前でnode-setupをしていることが原因です。
-理由はcacheを設定してsetup-nodeを実行する場合、途中でpnpmを実行してキャッシュのpathを取得しているためこれが原因だと思います。
+[結論](#結論)で述べたとおり、`cache`を指定しているのにpnpmのセットアップよりも前で`setup-node`を実行していることが原因です。
+`cache`を設定して`setup-node`を実行する場合、内部でpnpmを呼び出してキャッシュのパスを解決します。そのため、pnpmが未インストールだと失敗します。
 
-以下でキャッシュパスの取得に使用するコマンドが定義されていて
-
-https://github.com/actions/setup-node/blob/v5.0.0/src/cache-utils.ts#L34-L37
-
-気合でコードをたどっていくと以下で実際に実行されています
-
-https://github.com/actions/setup-node/blob/v5.0.0/src/cache-utils.ts#L69-L87
+- 参照: [キャッシュパスの解決ロジック](https://github.com/actions/setup-node/blob/v5.0.0/src/cache-utils.ts#L34-L37)
+- 参照: [実行箇所](https://github.com/actions/setup-node/blob/v5.0.0/src/cache-utils.ts#L69-L87)
 
 
 ### 解決方法
 
-cacheを指定する場合はactions/setup-nodeよりも先にパッケージマネージャーのセットアップを済ませておきましょう
+`cache`を指定する場合は、`actions/setup-node`よりも先にパッケージマネージャー（pnpm）のセットアップを済ませておきましょう。
+
+正しい順序（例）:
+
+```yaml
+- name: Set up pnpm
+  uses: pnpm/action-setup@v4
+  with:
+    run_install: false
+
+- name: Set up Node.js
+  uses: actions/setup-node@v4
+  with:
+    node-version: 22
+    cache: pnpm
+    cache-dependency-path: pnpm-lock.yaml
+```
+
+誤った順序（落とし穴の例）:
+
+```yaml
+- uses: actions/setup-node@v4
+  with:
+    node-version: 22
+    cache: pnpm
+# ↑ この時点で setup-node が pnpm を探しに行き失敗する
+- uses: pnpm/action-setup@v4
+```
 
 ## 参考リンク
 
-https://github.com/actions/setup-node/tree/v5.0.0
+- actions/setup-node: https://github.com/actions/setup-node/tree/v5.0.0
+- pnpm/action-setup: https://github.com/pnpm/action-setup
