@@ -6,10 +6,21 @@
   "author": "AkatukiSora <akatuki-sora@akatuki-host.com>",
   "license": "none",
   "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "lint:text": "textlint 'public/**/*.{md,mdx}'",
+    "lint:text:fix": "textlint --fix 'public/**/*.{md,mdx}'"
+  },
   "dependencies": {
     "@qiita/qiita-cli": "^1.6.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "textlint": "^14.6.0",
     "textlint-rule-preset-ja-technical-writing": "^12.0.2"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "lint-staged": {
+    "public/**/*.{md,mdx}": [
+      "textlint --format pretty --fix"
+    ]
+  }
 }
