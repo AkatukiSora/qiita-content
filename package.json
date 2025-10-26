@@ -20,7 +20,7 @@
   },
   "lint-staged": {
     "public/**/*.{md,mdx}": [
-      "textlint --format pretty --fix"
+      "textlint --fix"
     ]
   }
 }
