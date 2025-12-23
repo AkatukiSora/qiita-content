@@ -1,12 +1,12 @@
 ---
 title: Google Cloud のプロジェクトが消せなかった話
 tags:
-  - GoogleCloud
-  - Cloud
   - Google
+  - Cloud
+  - GoogleCloud
 private: false
-updated_at:
-id:
+updated_at: '2025-12-23T19:36:27+09:00'
+id: ff906c561458cd008dbf
 organization_url_name: null
 slide: false
 ignorePublish: false
