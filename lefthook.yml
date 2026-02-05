@@ -1,0 +1,10 @@
+# lefthook.yml - Git hooks configuration
+# https://github.com/evilmartians/lefthook
+
+pre-commit:
+  parallel: true
+  commands:
+    textlint:
+      glob: "public/**/*.{md,mdx}"
+      run: pnpm exec textlint {staged_files}
+      stage_fixed: true

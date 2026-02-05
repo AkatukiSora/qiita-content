@@ -14,7 +14,7 @@ ignorePublish: false
 
 ## はじめに
 
-本記事は、GitHub Actionsで`cache: pnpm`を指定したsetup-nodeを使う際にハマったので備忘録がてら残しておこうと思います。
+本記事は、GitHub Actionsで`cache: pnpm`を指定したsetup-nodeを使う際にハマったので備忘録がてら残しておきます。
 
 ## 環境
 
@@ -78,7 +78,7 @@ Error: Unable to locate executable file: pnpm. Please verify either the file pat
 
 `cache`を指定する場合は、`actions/setup-node`よりも先にパッケージマネージャー（pnpm）のセットアップを済ませておきましょう。
 
-正しい順序（例）:
+正しい順序（例）。
 
 ```yaml
 - name: Set up pnpm
@@ -94,7 +94,7 @@ Error: Unable to locate executable file: pnpm. Please verify either the file pat
     cache-dependency-path: pnpm-lock.yaml
 ```
 
-誤った順序（落とし穴の例）:
+誤った順序（落とし穴の例）。
 
 ```yaml
 - uses: actions/setup-node@v4

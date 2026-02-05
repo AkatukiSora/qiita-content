@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-# Run textlint via lint-staged on staged Markdown files
-pnpm exec lint-staged
-
