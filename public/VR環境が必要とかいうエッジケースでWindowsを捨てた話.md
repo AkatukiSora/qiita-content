@@ -1,12 +1,12 @@
 ---
 title: VR環境が必要とかいうエッジケースでWindowsを捨てた話
 tags:
-  - 'Linux'
-  - 'VR'
-  - 'Steam'
+  - Linux
+  - steam
+  - VR
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-02-05T11:28:41+09:00'
+id: 22e33bd3d7664a81df4e
 organization_url_name: null
 slide: false
 ignorePublish: false
